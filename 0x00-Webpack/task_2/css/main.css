@@ -1,7 +1,5 @@
-button {
-  text-align: right;
-}
 #count {
+  display: inline;
   font-weight: bold;
 }
 #logo {
