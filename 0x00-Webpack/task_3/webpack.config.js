@@ -1,11 +1,11 @@
 const path = require("path");
-import CleanWebpackPlugin from 'clean-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
     header: {
-      import: './modules/header/header.js'),
+      import: './modules/header/header.js',
       dependOn: 'shared'
     },
     body: {
@@ -31,7 +31,7 @@ module.exports = {
   devServer: {
     static: path.join(__dirname, './public'),
     open: true,
-    port 8564,
+    port: 8564,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -63,7 +63,7 @@ module.exports = {
   },
   performance: {
     hints: false,
-    masEntrypointSize: 512000,
-    masAssetSize: 512000,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
   }
 }
