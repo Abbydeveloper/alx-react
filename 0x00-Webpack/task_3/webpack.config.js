@@ -4,13 +4,35 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, './modules/header/header.js'),
+    header: {
+      import: './modules/header/header.js'),
+      dependOn: 'shared'
+    },
+    body: {
+      import: './modules/body/body.js',
+      dependOn: 'shared'
+    },
+    footer: {
+      import: './modules/footer/footer.js',
+      dependOn: 'shared'
+    },
+    shared: 'jquery',
   },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'public'),
   },
   mode: 'development',
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
+  devServer: {
+    static: path.join(__dirname, './public'),
+    open: true,
+    port 8564,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       filename: './index.html',
