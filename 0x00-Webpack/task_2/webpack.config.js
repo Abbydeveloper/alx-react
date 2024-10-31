@@ -17,7 +17,21 @@ module.exports = {
     {
       test: /\.(?:ico|gif|png|jpg|jpeg|svg|webp)$/i,
       type: 'asset/resource',
-      use: ['file-loader']
+      use: [
+	'file-loader',
+        {
+          loader: 'image-webpack-loader',
+	  options: {
+	    bypassOnDebug: true,
+            disable: true,
+	  }
+        }
+      ]
     }
-  ]
+  ],
+  performance: {
+    hints: false,
+    masEntrypointSize: 512000,
+    masAssetSize: 512000,
+  }
 }
