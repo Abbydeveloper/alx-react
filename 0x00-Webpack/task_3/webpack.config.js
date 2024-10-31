@@ -1,4 +1,6 @@
 const path = require("path");
+import CleanWebpackPlugin from 'clean-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 module.exports = {
   entry: {
@@ -9,6 +11,12 @@ module.exports = {
     path: path.resolve(__dirname, 'public'),
   },
   mode: 'development',
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: './index.html',
+    }),
+    new CleanWebpackPlugin(),
+  ],
   module: {
     rules: [
       {
